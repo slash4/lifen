@@ -34,13 +34,13 @@ RSpec.describe "Prices calculator", type: :model do
       }
     )
 
-    expect(c.calculate).to eq 0.95
+    expect(c.calculate).to eq BASE_PRICE + ADDITIONNAL_PAGE_PRICE + COLOR_PRICE + EXPRESS_PRICE
 
     c.color = false
-    expect(c.calculate).to eq 0.77
+    expect(c.calculate).to eq BASE_PRICE + ADDITIONNAL_PAGE_PRICE + EXPRESS_PRICE
 
     c.practitioner.express_delivery = false
-    expect(c.calculate).to eq 0.17
+    expect(c.calculate).to eq BASE_PRICE + ADDITIONNAL_PAGE_PRICE
   end
   it "generates correct json" do
     parse_data(data)
